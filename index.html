@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comming_soon_Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="contanier">
+        <h1 id="title">COMMING SOON</h1>
+        <div id="time_box">
+            <div id="box">
+                <h1 id="days">00</h1>
+                <h2 id="name">Days</h2>
+            </div>
+            <div id="box">
+                <h1 id="hours">00</h1>
+                <h2 id="name">Hours</h2>
+            </div>
+            <div id="box">
+                <h1 id="minutes">00</h1>
+                <h2 id="name">Minutes</h2>
+            </div>
+            <div id="box">
+                <h1 id="seconds">00</h1>
+                <h2 id="name">Seconds</h2>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        var a = new Date();
+        var b = a.getTime();
+        // change time below code (day*hour*minutes)
+        var total = b + (2*24*3600000);
+        function count()
+        {
+         var now = new Date();
+         var currentTime = now.getTime();
+         
+          var diff = total - currentTime;
+          var sec = Math.floor(diff/1000);
+          var min = Math.floor(sec/60);
+          var hour = Math.floor(min/60);
+          var day = Math.floor(hour/24);
+        
+         hour = hour%24;
+         min = min%60;
+         sec = sec%60;
+       
+         hour=(hour<10)?"0"+hour:hour;
+         min=(min<10)?"0"+min:min;
+         sec=(sec<10)?"0"+sec:sec;
+         day=(day<10)?"0"+day:day;  
+         
+         document.getElementById("days").innerHTML=day;
+         document.getElementById("hours").innerHTML= hour;
+         document.getElementById("minutes").innerHTML= min;
+         document.getElementById("seconds").innerHTML= sec;
+         setTimeout(count,1000);
+        }
+        count();
+       </script>    
+</body>
+
+</html>
